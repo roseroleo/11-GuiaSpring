@@ -1,10 +1,10 @@
-package com.Egg.ManosALaObra1;
+package com.egg.biblioteca;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ManosALaObra1ApplicationTests {
+class BibliotecaApplicationTests {
 
 	@Test
 	void contextLoads() {
