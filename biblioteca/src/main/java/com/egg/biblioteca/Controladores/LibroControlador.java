@@ -29,7 +29,7 @@ public class LibroControlador { //Localhost:8080/libro
     private EditorialServicio editorialService;
     
     @GetMapping("/registrar")
-    public String Registrar(ModelMap modelo){ //Localhost:8080/libro/CrearLibro
+    public String Registrar(ModelMap modelo){ //localhost:8080/libro/registrar
         List<Autor> autores = autorService.listaAutor();
         List<Editorial> editoriales = editorialService.listaEditorial();
         return "form_libro.html";

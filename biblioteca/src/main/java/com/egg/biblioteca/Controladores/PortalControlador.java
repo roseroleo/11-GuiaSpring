@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/") //Configura la url que recibira el llamado
-public class PortalControlador { //Localhost:880/
+public class PortalControlador { //localhost:880/
     
     @GetMapping("/")
     public String index(){ //Localhost:880/

@@ -15,25 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RequestMapping("/autor")
 public class AutorControlador {
-    
+
     @Autowired
     private AutorServicio autorServicio;
-    
+
     @GetMapping("/registrar") //localhost:8080/autor/registrar
-    public String registrar(){ 
+    public String registrar() {
         return "form_autor.html";
     }
-    
+
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre){
+    public String registro(@RequestParam String nombre) { //el nombre coincide con el que viende de html
+        System.out.println("nombre = " + nombre);
         try {
             autorServicio.cearAutor(nombre);
         } catch (MyException ex) {
             Logger.getLogger(AutorControlador.class.getName()).log(Level.SEVERE, null, ex);
-        return "form_autor.html";
+            return "form_autor.html";
         }
         return "index.html";
     }
-    
-    
 }
