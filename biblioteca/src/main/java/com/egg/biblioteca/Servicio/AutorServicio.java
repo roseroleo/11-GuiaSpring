@@ -15,15 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class AutorServicio {
 
-    //Instanciamos
-    
+    //Instanciamos entidades para acceder a la BD
     @Autowired
     private AutorRepositorio autorRepo;
 
     @Transactional
     public void cearAutor(String nombre) throws MyException {
-        //validarAutor(nombre);
-        //Instancaimos un objeto de la clase Autor
+        validarAutor(nombre);
+        //Instancaimos un objeto de la clase Autor para acceder a sus propiedades
         Autor autor = new Autor();
         //Seteamos
         autor.setNombre(nombre);
@@ -47,12 +46,12 @@ public class AutorServicio {
             autorRepo.save(autor);
         }
     }
-    /*
-    private void validarAutor(String n)throws MyException {
+    
+    private void validarAutor(String nombre)throws MyException {
         //MyException ex = new MyException();
-        if (n.isEmpty() || n == null){
-            throw MyException("El nombre de autor no puede ser nulo");
+        if (nombre.isEmpty()){
+            throw new MyException("El nombre de autor no puede estar vacio");
         }
     }
-    */
+    
 }
