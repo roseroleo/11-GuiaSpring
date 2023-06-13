@@ -36,12 +36,12 @@ public class AutorControlador {
     public String registro(@RequestParam String nombre, ModelMap modelo) { //el nombre coincide con el que viende de html
         try {
             autorServicio.cearAutor(nombre);
-            modelo.put("Exito", "El Autor fue cargado exitosamente");
+            modelo.put("exito", "El Autor fue cargado exitosamente");
         } catch (MyException ex) {
-            modelo.put("Error", ex.getMessage());
+            modelo.put("error", ex.getMessage());
             return "form_autor.html";
         }
-        return "index.html";
+        return "form_autor.html";
     }
     
     /*
