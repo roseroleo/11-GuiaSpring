@@ -19,17 +19,27 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     public UsuarioServicio usuarioService;
     
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(usuarioService)
-                .passwordEncoder(new BCryptPasswordEncoder());
+    public void configureGlobal(AuthenticationManagerBuilder a) throws Exception{
+        a.userDetailsService(usuarioService)
+                .passwordEncoder(new BCryptPasswordEncoder()); //encriptado de la clave
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/*","/js/*","/img/*","/**").permitAll();
-    
+        http //Configurar usuarios
+                .authorizeRequests()
+                .antMatchers("/admin/*").hasRole("ADMIN") //Rol de acceso administrativo
+                .antMatchers("/css/*","/js/*","/img/*","/**")
+                .permitAll()
+        .and().formLogin() //configurar login de usuario
+                .loginPage("/login")  //Pagina de login (Url a mostrar)
+                .loginProcessingUrl("/logincheck") //Url de autenticacion del usuario
+                .usernameParameter("email")  //Credencial de acceso
+                .passwordParameter("password") //Credencial de acceso
+                .defaultSuccessUrl("/inicio")  //Pagina de retorno si todo sale bien
+                .permitAll()
+        .and().logout() //Configurar salida
+                .logoutUrl("/logout")  //Url de cierre de cesion
+                .logoutSuccessUrl("/");  //Url de retorno
     }
-    
-    
-    
 }
 

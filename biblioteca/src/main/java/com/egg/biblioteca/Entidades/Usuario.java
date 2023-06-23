@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -23,6 +24,12 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    @OneToOne
+    private Imagen imagen;
+
+    public Usuario() {
+    }
 
     public String getId() {
         return id;
@@ -63,6 +70,16 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+    
+
     
     
 }
