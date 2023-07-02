@@ -11,15 +11,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class NoticiaServicio {
 
+    //Instanciamos un objeto unico para acceder a los metodos de JpaRepository
     @Autowired
     private NoticiaRepositorio noticiaRepo;
 
     //Anotamos como @Transactional porque impacta la BD
     @Transactional
+    //Creamos un metodo que obtiene sus parametros desde la vista html e impacta en la BD
     public void crearNoticia(String titulo, String cuerpo) throws MyException {
         Noticia n = new Noticia();
         validar(titulo, cuerpo);
-        n.setTitulo(titulo);
+        n.setTitulo("titulo1");
         n.setCuerpo(cuerpo);
         noticiaRepo.save(n);
     }

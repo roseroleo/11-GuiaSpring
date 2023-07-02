@@ -11,9 +11,11 @@ import org.springframework.stereotype.Repository;
 public interface NoticiaRepositorio extends JpaRepository<Noticia, String>{
     
 //    public void crearNoticia(String titulo, String cuerpo);
+    
      
 //    public void actualizarNoticia(String titulo, String cuerpo)  throws MyException ;
     
+    //Metodo de consulta propio para buscar una noticia por titulo
     @Query("SELECT n FROM Noticia n WHERE n.titulo = :titulo")
     public Noticia consultarNoticia(@Param("titulo") String titulo);
     
